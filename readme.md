@@ -1,5 +1,7 @@
 # Simple Calendar
 
+WIP
+
 ## Node-sass
 
 \$ npm install
@@ -14,4 +16,4 @@ sass --watch scss/main.scss:main.css
 -   [x] Get active day
 -   [ ] Get day name of first day in month
 -   [ ] Hide previous month
--   [ ]
+-   [ ] Check if previous month already exist
