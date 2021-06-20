@@ -10,8 +10,8 @@ sass --watch scss/main.scss:main.css
 
 ## To Do
 
-[x] Get current month
-[x] Get active day
-[] Get day name of first day in month
-[] Hide previous month
-[]
+-   [x] Get current month
+-   [x] Get active day
+-   [ ] Get day name of first day in month
+-   [ ] Hide previous month
+-   [ ]
