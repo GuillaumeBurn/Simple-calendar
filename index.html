@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+		<meta content="ie=edge" http-equiv="X-UA-Compatible" />
+		<title>Macro calculator</title>
+		<link href="main.css" rel="stylesheet" />
+		<link href="https://fonts.gstatic.com" rel="preconnect" />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<main>
+			<div class="calendar">
+				<div class="calendar__header">
+					<ul>
+						<li id="previousMonth" class="prev">&#10094;</li>
+						<li id="nextMonth" class="next">&#10095;</li>
+						<li>
+							<span id="currentMonth"></span>
+							<span id="currentYear"></span>
+						</li>
+					</ul>
+				</div>
+				<ul class="calendar__weekdays">
+					<li>Su</li>
+					<li>Mo</li>
+					<li>Tu</li>
+					<li>We</li>
+					<li>Th</li>
+					<li>Fr</li>
+					<li>Sa</li>
+				</ul>
+				<div id="calendarContainer" class="calendar__container">
+					<ul id="calendardays" class="calendar__days"></ul>
+				</div>
+			</div>
+			<div id="demo"></div>
+		</main>
+		<script src="main.js"></script>
+	</body>
+</html>

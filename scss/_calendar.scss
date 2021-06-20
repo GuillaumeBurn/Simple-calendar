@@ -1,0 +1,105 @@
+ul {
+	list-style-type: none;
+}
+body {
+	font-family: "Poppins", sans-serif;
+	font-size: 14px;
+	background-color: #212224;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+}
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 0 10%;
+	height: 100%;
+}
+.calendar {
+	height: 100%;
+	width: 100%;
+	/* Month header */
+	&__header {
+		width: 100%;
+		text-align: center;
+		font-family: "Poppins", sans-serif;
+		font-weight: bold;
+		padding: 32px 0;
+		/* Month list */
+		ul {
+			margin: 0;
+			padding: 0;
+		}
+		li {
+			color: white;
+			font-size: 32px;
+			letter-spacing: 3px;
+		}
+		/* Previous button inside month header */
+		.prev {
+			float: left;
+			padding-top: 10px;
+		}
+
+		/* Next button */
+		.next {
+			float: right;
+			padding-top: 10px;
+		}
+	}
+
+	/* Weekdays (Mon-Sun) */
+	&__weekdays {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		margin: 0;
+		padding: 10px 0;
+		margin-bottom: 12px;
+		li {
+			font-size: 16px;
+			color: #666;
+			text-align: center;
+		}
+	}
+	&__container {
+		position: relative;
+	}
+	/* Days (1-31) */
+	&__days {
+		position: absolute;
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		list-style-type: none;
+		padding: 10px 0;
+		margin: 0;
+		width: 100%;
+		li {
+			display: flex;
+			justify-content: center;
+			position: relative;
+			background-color: #212224;
+			color: #858587;
+			text-align: center;
+			font-size: 14px;
+			padding: 8px;
+			height: 100px;
+			&.active {
+				span {
+					position: absolute;
+					top: 0;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background: #1abc9c;
+					border-radius: 100%;
+					color: white !important;
+					padding: 5px;
+					height: 20px;
+					width: 20px;
+				}
+			}
+		}
+	}
+}
