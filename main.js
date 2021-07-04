@@ -1,28 +1,28 @@
+const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+];
+const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+];
 function currentDate() {
     var date = new Date();
-    var months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-    ];
-    var days = [
-        "Sunday",
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday"
-    ];
     var currentNameMonth = months[date.getMonth()];
     var numberOfCurrentMonth = date.getMonth();
     var currentYear = date.getFullYear();
@@ -96,7 +96,8 @@ function createDaysForCurrentMonth() {
     }
 }
 
-let selectedMonth = 0;
+let activeMonthNumber = 0;
+let activeMonthName = "";
 function getPreviousOrNextMonth() {
     const current = new currentDate();
     const previousButton = document.getElementById("previousMonth");
@@ -105,19 +106,24 @@ function getPreviousOrNextMonth() {
     let count = 1;
     previousButton.addEventListener("click", function() {
         --count;
-        selectedMonth = numberOfCurrentMonth + count;
-        console.log(selectedMonth);
+        activeMonthNumber = numberOfCurrentMonth + count;
+        activeMonthName = months[numberOfCurrentMonth + count - 1];
+        console.log(activeMonthNumber);
+        console.log("previous", activeMonthName);
         createPreviousOrNextMonth();
-        return selectedMonth;
+        return activeMonthNumber;
     });
     nextButton.addEventListener("click", function() {
         ++count;
-        selectedMonth = numberOfCurrentMonth + count;
-        console.log(selectedMonth);
+        activeMonthNumber = numberOfCurrentMonth + count;
+        activeMonthName = months[numberOfCurrentMonth + count - 1];
+        console.log(activeMonthNumber);
+        console.log("next", activeMonthName);
         createPreviousOrNextMonth();
-        return selectedMonth;
+        return activeMonthNumber;
     });
 }
+
 function createPreviousOrNextMonth() {
     const current = new currentDate();
     const currentYear = current.getCurrentYear();
@@ -127,7 +133,10 @@ function createPreviousOrNextMonth() {
 		selectedNameMonth,
 		currentYear
 	); */
-    var numberOfDaysInCurrentMonth = daysInMonth(selectedMonth, currentYear);
+    var numberOfDaysInCurrentMonth = daysInMonth(
+        activeMonthNumber,
+        currentYear
+    );
     const calendarContainer = document.getElementById("calendarContainer");
     const calendar = document.createElement("ul");
     calendar.classList.add("calendar__days");
