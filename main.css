@@ -187,12 +187,14 @@ main {
     position: relative; }
   .calendar__days {
     position: absolute;
-    display: grid;
+    display: none;
     grid-template-columns: repeat(7, 1fr);
     list-style-type: none;
     padding: 10px 0;
     margin: 0;
     width: 100%; }
+    .calendar__days.active {
+      display: grid; }
     .calendar__days li {
       display: flex;
       justify-content: center;

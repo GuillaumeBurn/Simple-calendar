@@ -73,6 +73,7 @@ function createDaysForCurrentMonth() {
     const calendarContainer = document.getElementById("calendarContainer");
     const calendar = document.createElement("ul");
     calendar.classList.add("calendar__days");
+    calendar.classList.add("active");
     calendar.id = currentNameMonth + "-" + currentYear;
     calendarContainer.appendChild(calendar);
     displayActiveMonthTitle(currentNameMonth, currentYear);
@@ -112,6 +113,8 @@ function getPreviousOrNextMonth() {
         --count;
         activeMonthNumber = numberOfCurrentMonth + count;
         activeMonthName = months[numberOfCurrentMonth - 1 + count];
+        displayActiveMonthTitle(activeMonthName, currentYear);
+        hidePreviousMonth(activeMonthNumber, false);
         if (activeMonthNumber <= 1) {
             numberOfCurrentMonth = 12;
             count = 1;
@@ -129,6 +132,8 @@ function getPreviousOrNextMonth() {
         count++;
         activeMonthName = months[numberOfCurrentMonth - 1 + count];
         activeMonthNumber = numberOfCurrentMonth + count;
+        displayActiveMonthTitle(activeMonthName, currentYear);
+        hidePreviousMonth(activeMonthNumber, true);
         if (activeMonthNumber >= 12) {
             numberOfCurrentMonth = 0;
             count = 0;
@@ -162,7 +167,7 @@ function createPreviousOrNextMonth() {
     calendar.classList.add("active");
     calendar.id = idOfMonth;
     calendarContainer.appendChild(calendar);
-    displayActiveMonthTitle(activeMonthName, currentYear);
+
     // Create empty list item to get the right position for the first day of the month
     for (let i = 0; i < nameOfFirstDay; i++) {
         const listItem = document.createElement("li");
@@ -184,6 +189,23 @@ function createPreviousOrNextMonth() {
 function displayActiveMonthTitle(monthName, year) {
     document.getElementById("currentMonth").innerHTML = monthName;
     document.getElementById("currentYear").innerHTML = year;
+}
+
+function hidePreviousMonth(month, state) {
+    let count = -1;
+    if (state == true) {
+        --count;
+    } else {
+        ++count;
+    }
+    const current = new currentDate();
+    const currentYear = current.getCurrentYear();
+    let previousMonth = months[month + count];
+    let monthToHide = document.getElementById(
+        previousMonth + "-" + currentYear
+    );
+    monthToHide.classList.remove("active");
+    console.log(previousMonth);
 }
 
 createDaysForCurrentMonth();
