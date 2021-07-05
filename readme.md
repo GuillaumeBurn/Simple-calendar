@@ -31,9 +31,11 @@ sass --watch scss/main.scss:main.css
 
 -   [x] Get current month
 -   [x] Get active day
--   [ ] Get day name of first day in month
+-   [x] Get day name of first day in month
 -   [ ] Hide previous month
 -   [ ] Check if previous month already exist
+-   [ ] Increment year
+-   [ ] Remove active class from previous month
 
 ## Authors
 
