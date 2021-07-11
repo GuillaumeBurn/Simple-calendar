@@ -10,7 +10,7 @@ const months = [
     "September",
     "October",
     "November",
-    "December"
+    "December",
 ];
 const days = [
     "Sunday",
@@ -19,7 +19,7 @@ const days = [
     "Wednesday",
     "Thursday",
     "Friday",
-    "Saturday"
+    "Saturday",
 ];
 function currentDate() {
     var date = new Date();
@@ -29,21 +29,21 @@ function currentDate() {
     var currentWeekDay = days[date.getDay()];
     var currentDay = date.getDate();
     return {
-        getCurrentNameMonth: function() {
+        getCurrentNameMonth: function () {
             return currentNameMonth;
         },
-        getNumberOfCurrentMonth: function() {
+        getNumberOfCurrentMonth: function () {
             return numberOfCurrentMonth;
         },
-        getCurrentYear: function() {
+        getCurrentYear: function () {
             return currentYear;
         },
-        getCurrentWeekDay: function() {
+        getCurrentWeekDay: function () {
             return currentWeekDay;
         },
-        getCurrentDay: function() {
+        getCurrentDay: function () {
             return currentDay;
-        }
+        },
     };
 }
 
@@ -109,7 +109,7 @@ function getPreviousOrNextMonth() {
     const currentYear = current.getCurrentYear();
 
     let count = 1;
-    previousButton.addEventListener("click", function() {
+    previousButton.addEventListener("click", function () {
         --count;
         activeMonthNumber = numberOfCurrentMonth + count;
         activeMonthName = months[numberOfCurrentMonth - 1 + count];
@@ -122,13 +122,13 @@ function getPreviousOrNextMonth() {
         let activeMonthIdName = activeMonthName + "-" + currentYear;
         let activeMonth = document.getElementById(activeMonthIdName);
         if (document.body.contains(activeMonth)) {
-            // activeMonth.classList.add("active");
+            displayActiveMonth(activeMonthNumber);
         } else {
             createPreviousOrNextMonth();
         }
         return activeMonthNumber;
     });
-    nextButton.addEventListener("click", function() {
+    nextButton.addEventListener("click", function () {
         count++;
         activeMonthName = months[numberOfCurrentMonth - 1 + count];
         activeMonthNumber = numberOfCurrentMonth + count;
@@ -141,7 +141,7 @@ function getPreviousOrNextMonth() {
         let activeMonthIdName = activeMonthName + "-" + currentYear;
         let activeMonth = document.getElementById(activeMonthIdName);
         if (document.body.contains(activeMonth)) {
-            //activeMonth.classList.add("active");
+            displayActiveMonth(activeMonthNumber);
         } else {
             createPreviousOrNextMonth();
         }
@@ -191,9 +191,19 @@ function displayActiveMonthTitle(monthName, year) {
     document.getElementById("currentYear").innerHTML = year;
 }
 
+function displayActiveMonth(month) {
+    const current = new currentDate();
+    const currentYear = current.getCurrentYear();
+    let activeMonth = months[month - 1];
+    let monthToDisplay = document.getElementById(
+        activeMonth + "-" + currentYear
+    );
+    monthToDisplay.classList.add("active");
+}
+
 function hidePreviousMonth(month, state) {
     let count = -1;
-    if (state == true) {
+    if (state === true) {
         --count;
     } else {
         ++count;
@@ -205,7 +215,6 @@ function hidePreviousMonth(month, state) {
         previousMonth + "-" + currentYear
     );
     monthToHide.classList.remove("active");
-    console.log(previousMonth);
 }
 
 createDaysForCurrentMonth();
